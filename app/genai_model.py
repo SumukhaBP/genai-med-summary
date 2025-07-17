@@ -1,13 +1,8 @@
-import openai
-import os
-openai.api_key = os.getenv("OPENAI_API_KEY")
+from transformers import pipeline
+
+# Load HuggingFace summarization pipeline (BART by default)
+summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
 def generate_summary(text: str) -> str:
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are a helpful medical assistant."},
-            {"role": "user", "content": f"Summarize this medical report: {text}"}
-        ]
-    )
-    return response.choices[0].message['content']
+    summary = summarizer(text, max_length=130, min_length=30, do_sample=False)
+    return summary[0]['summary_text']

@@ -1,11 +1,11 @@
 """
-# 🧠 GenAI Medical Summary Generator
+# 🧠 GenAI Medical Summary Generator (HuggingFace Edition)
 
-This project takes raw radiology or medical text and summarizes it using OpenAI's GPT-3.5 Turbo.
+This project takes raw radiology or medical text and summarizes it using a free open-source HuggingFace transformer model (`facebook/bart-large-cnn`).
 
 ## 🔧 Features
 - REST API with FastAPI
-- GPT-powered summary generation
+- HuggingFace BART-based summarization
 - Dockerized for portability
 - AWS EC2 deployment ready
 - GitHub Actions CI pipeline
@@ -23,7 +23,7 @@ uvicorn app.main:app --reload
 
 ### Example output:
 ```json
-{"summary": "The patient likely suffers from chronic sinusitis as shown by CT imaging..."}
+{"summary": "The patient has chronic sinusitis with mucosal thickening shown on CT..."}
 ```
 
 ## ☁️ Deploy on AWS EC2
